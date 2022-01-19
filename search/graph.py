@@ -19,7 +19,8 @@ class Graph:
     
     def nbr(self, node):
         """
-        added for testing reasons
+        Added for testing reasons
+        
         Parameters
         ----------
         node : a node in the graph
