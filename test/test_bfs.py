@@ -11,11 +11,13 @@ def test_bfs_traversal():
     that all nodes are being traversed (ie. returns 
     the right number of nodes, in the right order, etc.)
     """
-    G = graph('../data/tiny_network.adjlist')
+    G = graph.Graph('./data/tiny_network.adjlist')
     path = G.bfs('32353859;Atul', '30944313;Hani')
-    for i in range(1,len(path)-1):
-        assert path[i-1] in G[path[i]].nbr # want to see if 
+  #  print('hi')
+  #  for i in range(1,len(path)-1):
+  #      assert path[i-1] in G[path[i]].nbr # want to see if 
     assert ['32353859;Atul', 'Sirota', '30944313;Hani'] == path
+    assert 1==3
     pass
 
 def test_bfs():
@@ -29,5 +31,6 @@ def test_bfs():
     Include an additional test for nodes that are not connected 
     which should return None. 
     """
+    G = graph.Graph('./data/citation_network.adjlist')
     assert 1==1
     pass
