@@ -16,7 +16,8 @@ def test_bfs_traversal():
     # testing on a known path, to see if the shortest path given is the actual shortest path.
     assert path == ['31806696', 'Luke Gilbert', '31626775', 'Neil Risch']
     
-    # asserting that each node in the path is a neighbor of the node to the left
+    # asserting that each node in the path is a neighbor of the node to the left --> to make sure
+    # that a real path is created (added nbr method to allow for this)
     for i in range(1, len(path)-1):
         assert path[i] in G.nbr(path[i-1])
         
@@ -33,18 +34,19 @@ def test_bfs():
     Include an additional test for nodes that are not connected 
     which should return None. 
     """
-    # testing on a known path, to see if the shortest path given is the actual shortest path.
+    # testing on a prior known path, to see if the shortest path given is the actual shortest path.
     G = graph.Graph('./data/citation_network.adjlist')
     path = G.bfs('30727954', 'Yin Shen')
     assert path == ['30727954', 'Michael McManus', '32728249', 'Yin Shen']
+    # ensuring nodes are connected
     for i in range(1, len(path)-1):
         assert path[i] in G.nbr(path[i-1])
     
-    #testing on where not connected (and so should return None)
+    #testing on a case where nodes not connected (and so should return None)
     path = G.bfs('34599200', 'Vasilis Ntranos')
     assert path == None
     
-    #testing on if no end node specified
+    #testing on if no end node specified (with correct result)
     path = G.bfs('31712683', end = None)
     assert path == ['31712683', 'Andrej Sali', '32353859', 'Atul Butte', '33990806', 'Rima Arnaout', '31308376']
     pass
