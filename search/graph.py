@@ -16,6 +16,19 @@ class Graph:
         
         """
         self.graph = nx.read_adjlist(filename, create_using=nx.DiGraph, delimiter=";")
+    
+    def nbr(self, node):
+        """
+        added for testing reasons
+        Parameters
+        ----------
+        node : a node in the graph
+        
+        Returns
+        -------
+        the neighbors of that node
+        """
+        return self.graph[node]
 
     def bfs(self, start, end=None):
         """
