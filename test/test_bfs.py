@@ -15,11 +15,21 @@ def test_bfs_traversal():
     path = G.bfs('31806696', 'Neil Risch')
     # testing on a known path, to see if the shortest path given is the actual shortest path.
     assert path == ['31806696', 'Luke Gilbert', '31626775', 'Neil Risch']
+    assert len(path) == 4
+    assert path[0] == '31806696'
+    assert path[-1] == 'Neil Risch'
     
     # asserting that each node in the path is a neighbor of the node to the left --> to make sure
     # that a real path is created (added nbr method to allow for this)
     for i in range(1, len(path)-1):
         assert path[i] in G.nbr(path[i-1])
+        
+    # to test full traversal, using case where end is None. Then the full traversal is returned and I can
+    # test if all neighbors of nodes in traversal were searched
+    path = G.bfs('31806696', end=None)
+    for i in range(1, len(path)-1): # to test all neighbors of nodes are visited
+        for n in G.nbr(path[i-1]):
+            assert n in path
         
     pass
 
