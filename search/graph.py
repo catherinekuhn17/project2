@@ -67,8 +67,10 @@ class Graph:
         if end != None and end not in backtrace.keys():  # condition that there is and end node. but no path
             return None
         
+        if end == None: #if no end node is given, then we just return the nodes traversed in the order they were, recorded in visited
+            return visited 
         # otherwise, we will backtrace through the parent:child dictionary we created, starting with the
-        # end node, or the end of the path (if no end node)
+        # end node
 
         while path[-1] != start:  # loop through until we reach the start node
             child_node = path[-1] # last in path
